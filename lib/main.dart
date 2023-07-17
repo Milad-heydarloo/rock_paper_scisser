@@ -1,16 +1,25 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(run_run());
+  runApp(app_state_full());
 }
 
-class run_run extends StatelessWidget {
-  const run_run({super.key});
+//dar in state mitonim mohtava ro taqir bedim
+class app_state_full extends StatefulWidget {
+  const app_state_full({super.key});
 
   @override
+  State<app_state_full> createState() => _app_state_fullState();
+}
+
+class _app_state_fullState extends State<app_state_full> {
+  int a = 2;
+  int b = 2;
+  //setstate in method ro dobare load mikoneh
+  @override
   Widget build(BuildContext context) {
-    int a = 3;
-    int b = 2;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -37,7 +46,13 @@ class run_run extends StatelessWidget {
               TextButton(
                 style: TextButton.styleFrom(
                     side: BorderSide(width: 2, color: Colors.white)),
-                onPressed: () {},
+                onPressed: () {
+                  //in method ye bar dige fullwidget ro seda mizaneh va maqadir ro update mikoneh
+                  setState(() {
+                    a = 1;
+                    b = 3;
+                  });
+                },
                 child: Text('Start'),
               ),
               Container(
