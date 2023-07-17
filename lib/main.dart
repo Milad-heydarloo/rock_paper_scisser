@@ -29,6 +29,7 @@ PreferredSizeWidget _app_bar() {
 class _app_state_fullState extends State<app_state_full> {
   int a = 2;
   int b = 2;
+  bool t = false;
   //setstate in method ro dobare load mikoneh
   @override
   Widget build(BuildContext context) {
@@ -61,10 +62,22 @@ class _app_state_fullState extends State<app_state_full> {
                       foregroundColor: Colors.black,
                     ),
                     onPressed: () {
-                      setState(() {
-                        a = Random().nextInt(2) + 1;
-                        b = Random().nextInt(2) + 1;
-                      });
+                      for (var i = 0; i < 100; i++) {
+                        setState(() {
+                          setState(() {
+                            a = Random().nextInt(3) + 1;
+                            b = Random().nextInt(3) + 1;
+                          });
+                        });
+                      }
+                    },
+                    onLongPress: () {
+                      for (var i = 0; i < 2; i++) {
+                        setState(() {
+                          a = Random().nextInt(3) + 1;
+                          b = Random().nextInt(3) + 1;
+                        });
+                      }
                     },
                     child: Text(
                       textDirection: TextDirection.rtl,
