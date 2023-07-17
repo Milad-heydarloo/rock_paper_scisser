@@ -14,6 +14,18 @@ class app_state_full extends StatefulWidget {
   State<app_state_full> createState() => _app_state_fullState();
 }
 
+PreferredSizeWidget _app_bar() {
+  return AppBar(
+    backgroundColor: Colors.black,
+    centerTitle: true,
+    titleTextStyle: TextStyle(color: Colors.white),
+    title: Text(
+      'بازی سنگ کاغذ قیچی',
+      style: TextStyle(fontSize: 25, fontFamily: 'vazir'),
+    ),
+  );
+}
+
 class _app_state_fullState extends State<app_state_full> {
   int a = 2;
   int b = 2;
@@ -21,13 +33,10 @@ class _app_state_fullState extends State<app_state_full> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(fontFamily: 'vazir'),
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'sang',
-          ),
-          centerTitle: true,
-        ),
+        appBar: _app_bar(),
         body: SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -43,17 +52,29 @@ class _app_state_fullState extends State<app_state_full> {
                   ),
                 ),
               ),
-              TextButton(
-                style: TextButton.styleFrom(
-                    side: BorderSide(width: 2, color: Colors.white)),
-                onPressed: () {
-                  //in method ye bar dige fullwidget ro seda mizaneh va maqadir ro update mikoneh
-                  setState(() {
-                    a = 1;
-                    b = 3;
-                  });
-                },
-                child: Text('Start'),
+              Container(
+                width: 200,
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.black,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        a = Random().nextInt(2) + 1;
+                        b = Random().nextInt(2) + 1;
+                      });
+                    },
+                    child: Text(
+                      textDirection: TextDirection.rtl,
+                      'شروع بازی',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ]),
               ),
               Container(
                 height: 100,
