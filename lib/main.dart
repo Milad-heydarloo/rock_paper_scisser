@@ -65,6 +65,7 @@ class _app_state_fullState extends State<app_state_full> {
                       for (var i = 0; i < 100; i++) {
                         setState(() {
                           setState(() {
+                            //
                             a = Random().nextInt(3) + 1;
                             b = Random().nextInt(3) + 1;
                           });
@@ -80,6 +81,7 @@ class _app_state_fullState extends State<app_state_full> {
                       }
                     },
                     child: Text(
+                      //baraye text haye farsi bayad Text Direction besh bedim
                       textDirection: TextDirection.rtl,
                       'شروع بازی',
                       style: TextStyle(
